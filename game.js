@@ -26,11 +26,6 @@ function setSprite(player, spriteName){
     }
 }
 
-// onkeydown('down' () => {
-//     if(player.isInDialogue) return
-//     setSprite(player, 'player-down')
-//     player.move(0, playerspeed)
-// })
 
 //Setting up my scenes to have 6 rooms/screens
 scene("wake_up", () => {
