@@ -16,6 +16,22 @@ kaplay ({
         move(screenLeft, 100),
     ]);
 
+//setting up sprite movement
+
+function setSprite(player, spriteName){
+    if (player.currentSprite !== spriteName)
+    {
+        player.use(sprite(spriteName))
+        player.currentSprite = spriteName
+    }
+}
+
+// onkeydown('down' () => {
+//     if(player.isInDialogue) return
+//     setSprite(player, 'player-down')
+//     player.move(0, playerspeed)
+// })
+
 //Setting up my scenes to have 6 rooms/screens
 scene("wake_up", () => {
 
