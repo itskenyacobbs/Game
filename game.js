@@ -1,10 +1,11 @@
 // const canvas = document.getElementById("game"); //keeping this just in case
 
 kaplay ({
-    width: 650,
-    height: 650,
+    width: 550,
+    height: 550,
+    // background: '#FFFFFF',
     scale: 1,
-    background: '#CFE3FC',
+    
     buttons: {
         up: {
             keyboard: ["up", "w"],
@@ -24,8 +25,17 @@ kaplay ({
 debug.log("Hello, World");
 
 scene("test", () => {
+    // // levelWidth(400);
+    // addLevel(map, {
+    //     tileWidth: 20,
+    //     tileHeight: 10,
+    //     tiles: {
+    //         "==="
+    //     }
+    // });
+
     const player = add([
-        rect(30, 30),
+        rect(20, 20),
         pos(40, 40),
         color(0,0,255),
         area(),
@@ -44,9 +54,14 @@ scene("test", () => {
     onKeyDown("down", () => {
         player.move(0, 200);
     });
+
+loadSprite("Trouble", "sprites/troublesprite.png")
+const Trouble = add([sprite("Trouble"), 
+                    pos(400, 30),
+                    scale(3.5),
+                    area(),
+                ]);
 });
-
-
 
 //Setting up my scenes to have 6 rooms/screens
 scene("wake_up", () => {
