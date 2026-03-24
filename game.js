@@ -1,10 +1,10 @@
 // const canvas = document.getElementById("game"); //keeping this just in case
 
 kaplay ({
-    width: 550,
-    height: 550,
-    // background: '#FFFFFF',
-    scale: 1,
+    width: 320,
+    height: 288,
+    //background: '#FFFFFF',
+    scale: 2,
     
     buttons: {
         up: {
@@ -34,6 +34,7 @@ scene("test", () => {
     //     }
     // });
 
+
     const player = add([
         rect(20, 20),
         pos(40, 40),
@@ -41,6 +42,18 @@ scene("test", () => {
         area(),
         // move(screenLeft, 100),
     ]);
+
+
+    let tick = 0;
+    onUpdate(() => {
+        camPos(player.pos)
+        tick++
+        // if ((isKeyDown('down') || isKeyDown('up'))
+        //     && tick % 20 === 0
+        //     && !player.isInDialogue) {
+        //         player.flipX = !player.flipX
+        //     }
+    })
 
     onKeyDown("up", () => {
         player.move(0, -200);
@@ -55,12 +68,19 @@ scene("test", () => {
         player.move(0, 200);
     });
 
-loadSprite("Trouble", "sprites/troublesprite.png")
-const Trouble = add([sprite("Trouble"), 
-                    pos(400, 30),
-                    scale(3.5),
+    //load sprite is good for only one sprite but loadSpriteAtlas.
+loadSprite("trouble", "sprites/troublesprite.png")
+const trouble = add([sprite("trouble"), 
+                    pos(180, 30),
+                    scale(2),
                     area(),
+                    outline(4),
                 ]);
+
+player.onCollide("trouble", () => {
+    addKaboom(player.pos);
+})
+
 });
 
 //Setting up my scenes to have 6 rooms/screens
