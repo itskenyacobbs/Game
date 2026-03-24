@@ -18,6 +18,9 @@ kaplay ({
         },
         right: {
             keyboard: ["right", "d"],
+        },
+        space: {
+            keyboard: ["space"]
         }
     }
 });
@@ -34,6 +37,14 @@ scene("test", () => {
     //     }
     // });
 
+    loadSprite("trouble", "sprites/troublesprite.png")
+const trouble = add([sprite("trouble"), 
+                    pos(180, 30),
+                    scale(2),
+                    area(50),
+                    outline(4),
+                ]);
+
 
     const player = add([
         rect(20, 20),
@@ -44,7 +55,7 @@ scene("test", () => {
     ]);
 
 
-    let tick = 0;
+    // let tick = 0;
     onUpdate(() => {
         camPos(player.pos)
         // tick++
@@ -67,20 +78,14 @@ scene("test", () => {
     onKeyDown("down", () => {
         player.move(0, 200);
     });
-
-    //load sprite is good for only one sprite but loadSpriteAtlas.
-loadSprite("trouble", "sprites/troublesprite.png")
-const trouble = add([sprite("trouble"), 
-                    pos(180, 30),
-                    scale(2),
-                    area(),
-                    outline(4),
-                ]);
-
-player.onCollide("trouble", () => {
-    addKaboom(player.pos);
-})
-
+    onKeyDown("space", () => {
+        player.onCollide("player", "trouble", () => {
+            debug.log("ok touch is happening")
+        })
+    })
+// player.onCollide("trouble", () => {
+//     addKaboom(player.pos);
+// })
 });
 
 //Setting up my scenes to have 6 rooms/screens
