@@ -47,7 +47,7 @@ scene("test", () => {
     let tick = 0;
     onUpdate(() => {
         camPos(player.pos)
-        tick++
+        // tick++
         // if ((isKeyDown('down') || isKeyDown('up'))
         //     && tick % 20 === 0
         //     && !player.isInDialogue) {
