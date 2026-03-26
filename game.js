@@ -25,7 +25,7 @@ kaplay ({
     }
 });
 
-debug.log("Hello, World");
+// debug.log("Hello, World");
 
 scene("test", () => {
     // // levelWidth(400);
@@ -41,7 +41,7 @@ scene("test", () => {
 const trouble = add([sprite("trouble"), 
                     pos(180, 30),
                     scale(2),
-                    area(50),
+                    area(),
                     outline(4),
                 ]);
 
@@ -86,6 +86,17 @@ const trouble = add([sprite("trouble"),
 // player.onCollide("trouble", () => {
 //     addKaboom(player.pos);
 // })
+
+player.onCollide('trouble', () => {
+    player.isInDialogue = true
+    const dialogueBoxContainer = add([fixed()])
+    const dialogueBoxText = dialogueBoxContainer.add([
+        rect(1000, 200),
+        outline(15),
+        post(150, 150),
+        fixed()
+    ])
+})
 });
 
 //Setting up my scenes to have 6 rooms/screens
@@ -114,3 +125,5 @@ scene("end", () => {
 })
 
 go("test");
+debug.inspect = true
+debug.error("Testing testing one two three")
