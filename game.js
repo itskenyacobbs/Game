@@ -43,6 +43,7 @@ const trouble = add([sprite("trouble"),
                     scale(2),
                     area(),
                     outline(4),
+                     "trouble"
                 ]);
 
 
@@ -51,6 +52,7 @@ const trouble = add([sprite("trouble"),
         pos(40, 40),
         color(0,0,255),
         area(),
+        "player"
         // move(screenLeft, 100),
     ]);
 
@@ -79,7 +81,7 @@ const trouble = add([sprite("trouble"),
         player.move(0, 200);
     });
     onKeyDown("space", () => {
-        player.onCollide("player", "trouble", () => {
+        player.onCollide("trouble", () => {
             debug.log("ok touch is happening")
         })
     })
@@ -87,16 +89,18 @@ const trouble = add([sprite("trouble"),
 //     addKaboom(player.pos);
 // })
 
-player.onCollide('trouble', () => {
-    player.isInDialogue = true
-    const dialogueBoxContainer = add([fixed()])
-    const dialogueBoxText = dialogueBoxContainer.add([
-        rect(1000, 200),
-        outline(15),
-        post(150, 150),
-        fixed()
-    ])
-})
+
+
+// player.onCollide('trouble', () => {
+//     player.isInDialogue = true
+//     const dialogueBoxContainer = add([fixed()])
+//     const dialogueBoxText = dialogueBoxContainer.add([
+//         rect(1000, 200),
+//         outline(15),
+//         post(150, 150),
+//         fixed()
+//     ])
+// })
 });
 
 //Setting up my scenes to have 6 rooms/screens
@@ -127,3 +131,4 @@ scene("end", () => {
 go("test");
 debug.inspect = true
 debug.error("Testing testing one two three")
+// debug.log(onCollide)
